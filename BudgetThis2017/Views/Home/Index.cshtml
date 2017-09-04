@@ -1,0 +1,19 @@
+﻿@{
+  ViewBag.Title = "Home Page";
+}
+@section Scripts {
+  <script src="~/lib/underscore/underscore-min.js"></script>
+  <script src="~/lib/angular/angular.min.js"></script>
+  <script src="~/lib/angular-route/angular-route.min.js"></script>
+
+  <script src="~/js/simpleControls.js"></script>
+  <script src="~/js/app-budgetthis.js"></script>
+  <script src="~/js/homeController.js"></script>
+  <script src="~/js/billController.js"></script>
+  <script src="~/js/billsController.js"></script>
+  <script src="~/js/settingsController.js"></script>
+
+}
+<div class="row" ng-app="app-budgetthis">
+  <div ng-view class="col-md-12"></div>
+</div>

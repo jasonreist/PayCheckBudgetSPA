@@ -1,0 +1,8 @@
+{
+  "MailSettings": { "ToAddress": "someone@domain.com" },
+  "ConnectionStrings": {
+    /*"BudgetContextConnection": "Server=(localdb)\\MSSQLLocalDb;Database=TheWorldDb;Trusted_Connection=true;MultipleActiveResultSets=true;"*/
+    "BudgetContextConnection": "Data Source=sql5021.SmarterASP.NET;Initial Catalog=DB_A15339_BudgetThis;User Id=DB_A15339_BudgetThis_admin;Password=BTC0nt3Xt!;"
+  },
+  "Keys": { "BingKey": "" }
+}

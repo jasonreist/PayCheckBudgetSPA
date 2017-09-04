@@ -1,0 +1,100 @@
+﻿<style type="text/css">
+
+</style>
+
+
+<div class="col-md-10 col-md-offset-1" style="padding-bottom:25px;">
+
+  <div class="text-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
+
+  <a href="/home#!/bills">Back to bills list</a>
+
+  <div style="font-size:44px; margin: 30px 0 30px 10px; display: table; padding:20px; background-color:{{vm.bill.backgroundColor}}; color:{{vm.bill.foreColor}}" class="Rounded">
+    <i class="ng-bind: {{vm.bill.icon}}"></i>&nbsp;<span ng-bind="vm.bill.name"></span>&nbsp;<span ng-bind="vm.bill.amount | currency"></span>
+  </div>
+
+  <input type="hidden" id="icon" name="icon" ng-model="vm.bill.icon" value="vm.bill.icon" />
+
+  <form novalidate name="newBillForm" ng-submit="vm.updateCustomBill()">
+    <div class="row" style="padding:0 0 15px 0;">
+      <div class="col-md-4">
+        <label ng-for="vm.bill.name">Name</label>
+      </div>
+      <div class="col-md-4" style="padding-top:8px;">
+        <input type="text" class="field" id="name" name="name" value="{{vm.bill.name}}" ng-model="vm.bill.name" />
+      </div>
+    </div>
+
+    <div class="row" style="padding:0 0 15px 0;">
+      <div class="col-md-4" style="">
+        <label ng-for="vm.bill.icon">Icon</label>
+      </div>
+      <div class="col-md-4" style="padding-top:8px;">
+        <select id="icon" name="icon" class="" ng-model="vm.bill.icon" value="{{vm.bill.icon}}">
+          <option ng-repeat="item in vm.iconOptions" ng-selected="vm.bill.icon == item.name" ng-value="item.name">{{item.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row" style="padding:0 0 15px 0;">
+      <div class="col-md-4">
+        <label ng-for="vm.bill.amount">Amount</label>
+      </div>
+      <div class="col-md-4" style="padding-top:8px;">
+        <input type="text" class="field" id="amount" name="amount" value="{{vm.bill.amount}}" ng-model="vm.bill.amount" />
+      </div>
+    </div>
+
+    <div class="row" style="padding:0 0 15px 0;">
+      <div class="col-md-4" style="">
+        <label ng-for="vm.bill.dueDay">Due Day</label>
+      </div>
+      <div class="col-md-4" style="padding-top:8px;">
+        <input type="text" class="field" style="width:25px;" id="dueDay" name="dueDay" value="{{vm.bill.dueDay}}" ng-model="vm.bill.dueDay" ng-model-options="{updateOn: 'blur'}" ng-blur="vm.getSuffix(0)" />{{vm.suffix}}
+      </div>
+    </div>
+
+    <div class="row" style="padding:0 0 15px 0;">
+      <div class="col-md-4" style="">
+        <label ng-for="vm.bill.foreColor">Text Color</label>
+      </div>
+      <div class="col-md-4" style="padding-top:8px;">
+        <input type="text" class="field" style="width:80px;" id="foreColor" name="foreColor" value="{{vm.bill.foreColor}}" ng-model="vm.bill.foreColor" ng-model-options="{updateOn: 'blur'}" />
+        <input type="color" ng-model="vm.bill.foreColor" value="{{vm.bill.foreColor}}" />
+      </div>
+    </div>
+
+    <div class="row" style="padding:0 0 15px 0;">
+      <div class="col-md-4" style="">
+        <label ng-for="vm.bill.backgroundColor">Background Color</label>
+      </div>
+      <div class="col-md-4" style="padding-top:8px;">
+        <input type="text" class="field" style="width:80px;" id="backgroundColor" name="backgroundColor" value="{{vm.bill.backgroundColor}}" ng-model="vm.bill.backgroundColor" ng-model-options="{updateOn: 'blur'}" />
+        <input type="color" ng-model="vm.bill.backgroundColor" value="{{vm.bill.backgroundColor}}" />
+      </div>
+    </div>
+
+    <div class="row" style="padding:0 0 25px 0;">
+      <div class="col-md-1 col-md-offset-8"><input type="button" ng-click="vm.saveBill()" value="Save" /></div><span class="text-muted">{{vm.message}}</span>
+    </div>
+
+    <label ng-for="vm.bill.customBills">Custom Bills</label>
+    <table class="table table-responsive table-striped">
+      <tr>
+        <th>Amount</th>
+        <th>When</th>
+        <th></th>
+      </tr>
+      <tr ng-repeat="cbill in vm.bill.customBills">
+        <td><input type="text" ng-model="vm.bill.customBills[$index].amount" value="{{vm.bill.customBills[$index].amount}}" /></td>
+        <td><input type="text" ng-model="vm.bill.customBills[$index].billDate" value="{{vm.bill.customBills[$index].billDate}}" /></td>
+        <td><i class="fa fa-remove" style="cursor:pointer; font-size: x-large;" ng-click="vm.removeCustomBill(cbill)"></i></td>
+      </tr>
+      <tr>
+        <td style="padding-top:25px;"><input type="text" ng-model="vm.newCustomBill.amount" /></td>
+        <td style="padding-top:25px;"><input type="text" ng-model="vm.newCustomBill.billDate" /></td>
+        <td style="padding-top:25px;"><input type="button" value="Create" ng-click="vm.createCustomBill()" /></td>
+      </tr>
+    </table>
+  </form>
+</div> 

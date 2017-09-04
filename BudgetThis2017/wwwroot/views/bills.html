@@ -1,0 +1,47 @@
+﻿<style type="text/css">
+
+</style>
+
+
+<div class="col-md-10 col-md-offset-1" style="padding-bottom:25px;">
+
+  <div class="page-title">Bills</div>
+
+  <div class="text-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
+
+  <form novalidate name="newBillForm" ng-submit="vm.addBill()">
+    <div class="row">
+      <div class="col-md-4 col-sm-12 form-group">
+        <input type="text" class="form-control" placeholder="Name" id="name" name="name" ng-model="vm.newBill.name" required ng-minlength="5" />
+        <span ng-show="newBillForm.name.$error.required" class="text-warning">Required.</span>
+        <span ng-show="newBillForm.name.$error.minlength" class="text-warning">> 5 characters</span>
+      </div>
+      <div class="col-md-3 col-sm-12 form-group">
+        <input type="number" class="form-control" placeholder="Due On" id="dueDay" name="dueDay" ng-model="vm.newBill.dueDay" required value="1" min="1" max="31" />
+        <span ng-show="newBillForm.dueDay.$error.required" class="text-warning">Required.</span>
+        <span ng-show="newBillForm.dueDay.$error.min" class="text-warning">1 - 31</span>
+        <span ng-show="newBillForm.dueDay.$error.max" class="text-warning">1 - 31</span>
+      </div>
+      <div class="col-md-3 col-sm-12 input-group">
+        <input type="text" class="form-control" placeholder="Amount" id="amount" name="amount" ng-model="vm.newBill.amount" required />
+        <span ng-show="newBillForm.amount.$error.required" class="text-warning" style="">Required.</span>
+      </div>
+      <div class="col-md-2 col-sm-12" style="">
+        <input type="submit" value="Add" class="btn btn-sm btn-success" ng-disabled="newBillForm.$invalid" />
+      </div>
+    </div>
+  </form>
+
+  <wait-cursor display-when="vm.isBusy"></wait-cursor>
+  <div class="row" style="height:50px; margin-bottom:10px;" ng-repeat="bill in vm.bills">
+    <div class="col-md-1 col-md-offset-1" style="line-height:50px;">{{bill.dueDay}}{{vm.getSuffix(bill.dueDay)}}</div>
+    <div class="col-md-1" style="line-height:50px;"><a href="/home#!/bill/{{bill.id}}">Edit</a></div>
+    <div class="col-md-7">
+      <div class="Rounded" style="background-color:{{bill.backgroundColor}}; color:{{bill.foreColor}}; padding:3px 5px 3px 5px;">
+        <i class="fa {{bill.icon}}"></i>
+        <span id="BillName_{{bill.id}}">{{bill.name}}</span> &nbsp;&nbsp; {{bill.amount | currency}}
+      </div>
+    </div>
+    <div class="col-md-2" style="line-height:50px;"><i class="fa fa-remove" style="cursor:pointer; font-size: x-large;" ng-click="vm.deleteBill(bill)" /></div>
+  </div>
+</div>

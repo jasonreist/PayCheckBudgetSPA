@@ -1,0 +1,69 @@
+﻿
+  <div class="col-md-10 col-md-offset-1" style="padding-bottom:25px;">
+
+    <div class="page-title">Settings</div>
+
+    <div class="text-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
+
+    <form novalidate name="newBillForm" ng-submit="vm.updateSettings()">
+      <div class="row" style="padding:0 0 15px 0;">
+        <div class="col-md-5">
+          <label ng-for="vm.settings.previousPeriodsToShow">Previous Periods To Show</label>
+        </div>
+        <div class="col-md-5" style="padding-top:8px;">
+          <input type="text" class="field" id="previousPeriodsToShow" name="previousPeriodsToShow" value="{{vm.settings.previousPeriodsToShow}}" ng-model="vm.settings.previousPeriodsToShow" />
+        </div>
+      </div>
+
+      <div class="row" style="padding:0 0 15px 0;">
+        <div class="col-md-5">
+          <label ng-for="vm.settings.checksToShow">Paychecks to Show</label>
+        </div>
+        <div class="col-md-5" style="padding-top:8px;">
+          <input type="text" class="field" id="checksToShow" name="checksToShow" value="{{vm.settings.checksToShow}}" ng-model="vm.settings.checksToShow" />
+        </div>
+      </div>
+
+      <div class="row" style="padding:0 0 15px 0;">
+        <div class="col-md-5" style="">
+          <label ng-for="vm.settings.addTithe">Add Tithe</label>
+        </div>
+        <div class="col-md-5" style="padding-top:8px;">
+          <input type="checkbox" id="addTithe" name="addTithe" ng-checked="{{vm.settings.addTithe}}" ng-model="vm.settings.addTithe" class="tithe-checkbox" />
+        </div>
+      </div>
+
+      <div class="row" style="padding:0 0 15px 0;">
+        <div class="col-md-5" style="">
+          <label ng-for="vm.settings.titheMultiplier">Tithe Multiplier</label>
+        </div>
+        <div class="col-md-5" style="padding-top:8px;">
+          <input type="text" class="field" style="width:80px;" id="titheMultiplier" name="titheMultiplier" value="{{vm.settings.titheMultiplier}}" ng-model="vm.settings.titheMultiplier" />
+        </div>
+      </div>
+
+      <div class="row" style="padding:0 0 15px 0;">
+        <div class="col-md-5" style="">
+          <label ng-for="vm.settings.titheBGColor">Tithe Background Color</label>
+        </div>
+        <div class="col-md-5" style="padding-top:8px;">
+          <input type="text" class="field" style="width:80px;" id="titheBGColor" name="titheBGColor" value="{{vm.settings.titheBGColor}}" ng-model="vm.settings.titheBGColor" ng-model-options="{updateOn: 'blur'}" />
+          <input type="color" ng-model="vm.settings.titheBGColor" value="{{vm.settings.titheBGColor}}" />
+        </div>
+      </div>
+
+      <div class="row" style="padding:0 0 15px 0;">
+        <div class="col-md-5" style="">
+          <label ng-for="vm.settings.titheForeColor">Tithe Text Color</label>
+        </div>
+        <div class="col-md-5" style="padding-top:8px;">
+          <input type="text" class="field" style="width:80px;" id="titheForeColor" name="titheForeColor" value="{{vm.settings.titheForeColor}}" ng-model="vm.settings.titheForeColor" ng-model-options="{updateOn: 'blur'}" />
+          <input type="color" ng-model="vm.settings.titheForeColor" value="{{vm.settings.titheForeColor}}" />
+        </div>
+      </div>
+
+      <div class="row" style="padding:0 0 25px 0;">
+        <div class="col-md-1"><input type="button" ng-click="vm.saveSettings()" value="Save" /></div><span class="text-muted">{{vm.message}}</span>
+      </div>
+    </form>
+  </div>
