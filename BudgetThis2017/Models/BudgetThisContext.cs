@@ -16,7 +16,7 @@ namespace BudgetThis2017.Models
     public DbSet<Bill> Bills { get; set; }
     public DbSet<CustomBill> CustomBills { get; set; }
     public DbSet<Paycheck> Paychecks { get; set; }
-    public DbSet<Payday> Paydays { get; set; }
+    public DbSet<PayDay> Paydays { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

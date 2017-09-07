@@ -27,5 +27,20 @@ namespace BudgetThis2017.ViewModels
 
     public ICollection<CustomBill> CustomBills { get; set; }
     //public PaycheckDetailsViewModel Paycheck { get; set; }
+
+    public BillViewModel()
+    {
+    }
+    public BillViewModel(BillViewModel other)
+    {
+      this.UserId = other.UserId;
+      this.Name = other.Name;
+      this.Amount = other.Amount;
+      this.DueDay = other.DueDay;
+      this.DueDaySuffix = other.DueDaySuffix;
+      this.CustomBillCount = other.CustomBillCount;
+      this.BackgroundColor = other.BackgroundColor;
+      this.ForeColor = other.ForeColor;
+    }
   }
 }

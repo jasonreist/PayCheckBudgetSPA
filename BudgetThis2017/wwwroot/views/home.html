@@ -1,4 +1,15 @@
 ﻿
-<div class="col-md-6 col-md-offset-3">
   <div class="text-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
-</div> 
+
+  <div class="text-center" ng-show="vm.isBusy"><i class="fa fa-spinner fa-spin"></i> Loading...</div>
+
+  <div class="row">
+    <div class="col-sm-1 col-md-2" style="" ng-repeat-start="day in vm.home.days" ng-if="$index < 7" ng-repeat-end>
+      {{day.date | date : 'LLLL'}} {{day.date | date : 'd'}}
+
+      <div ng-repeat="bill in day.bills">
+        <i class="{{bill.icon}}"></i> {{bill.name}} {{bill.amount | currency}}
+      </div>
+    </div>
+
+  </div>

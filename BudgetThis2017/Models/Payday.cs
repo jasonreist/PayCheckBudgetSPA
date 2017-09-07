@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BudgetThis2017.Models
 {
-    public class Payday
+  public class PayDay
   {
     public int Id { get; set; }
     public Guid UserId { get; set; }

@@ -45,7 +45,7 @@ namespace BudgetThis2017.Models
           PreviousPeriodsToShow = 1,
           WeekStartDay = 0
         });
-        _context.Paydays.Add(new Payday()
+        _context.Paydays.Add(new PayDay()
         {
           UserId = newuserid,
           Paydate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)

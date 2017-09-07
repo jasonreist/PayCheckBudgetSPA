@@ -12,23 +12,9 @@ namespace BudgetThis2017.Models
 
     public List<BillViewModel> Bills { get; set; }
 
-    public ListBillsViewModel(Guid userid)
+    public ListBillsViewModel()
     {
-      this.Bills = new List<BillViewModel>();
 
-      //PBProxy p = new PBProxy();
-      //foreach (Bill b in p.GetBills(userid).OrderBy(a => a.DueDay))
-      //{
-      //  BillViewModel bill = Mapper.Map<BillViewModel>(b);
-      //  bill.DueDaySuffix = Utility.IntSuffix(bill.DueDay);
-
-      //  IEnumerable<CustomBill> cbills = p.GetCustomBills(b.Id).OrderBy(a => a.BillDate);
-      //  if (cbills != null)
-      //    bill.CustomBillCount = cbills.Count();
-
-      //  this.Bills.Add(bill);
-      //}
-      p = null;
     }
   }
 }

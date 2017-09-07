@@ -93,9 +93,9 @@ namespace BudgetThis2017
                        //.ForMember(x => x.Paycheck, opt => opt.UseValue(null))
                        .ForMember(x => x.CustomBillCount, opt => opt.Ignore());
 
-               config.CreateMap<PaycheckViewModel, Paycheck>();
+               config.CreateMap<PaycheckViewModel, Paycheck>().ReverseMap();
                config.CreateMap<Paycheck, PaycheckViewModel>()
-                       .ForMember(x => x.PayCheck, opt => opt.UseValue(new PaycheckViewModel()))
+                       //.ForMember(x => x.PayCheck, opt => opt.UseValue(null))
                        .ForMember(x => x.Exists, opt => opt.Ignore());
 
                config.CreateMap<CustomBillViewModel, CustomBill>().ReverseMap();

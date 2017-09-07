@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BudgetThis2017.ViewModels;
+using BudgetThis2017.Helper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
 
 namespace BudgetThis2017.Models
 {
@@ -28,6 +31,32 @@ namespace BudgetThis2017.Models
       temp.ForEach(x => x.CustomBills = x.CustomBills.OrderBy(y => y.BillDate).ToList());
       return temp;
     }
+    public ListBillsViewModel GetListBillsViewModelByUser(Guid identity)
+    {
+      var Return = new ListBillsViewModel();
+      Return.Bills = new List<BillViewModel>();
+
+      foreach (Bill b in GetBillsByUser(identity))
+      {
+        BillViewModel bill = Mapper.Map<BillViewModel>(b);
+        bill.DueDaySuffix = Utility.IntSuffix(bill.DueDay);
+
+        IEnumerable<CustomBill> cbills = GetCustomBills(b.Id).OrderBy(a => a.BillDate);
+        if (cbills != null)
+          bill.CustomBillCount = cbills.Count();
+
+        Return.Bills.Add(bill);
+      }
+      return Return;
+    }
+    public IEnumerable<PayDay> GetPaydaysByUser(Guid identity)
+    {
+      return _context.Paydays.Where(p => p.UserId == identity).ToList();
+    }
+    public PayDay GetPaydaySeedByUser(Guid identity)
+    {
+      return _context.Paydays.Where(p => p.UserId == identity).ToList().FirstOrDefault();
+    }
     public void AddBill(Bill bill)
     {
       _context.Add(bill);
@@ -45,6 +74,10 @@ namespace BudgetThis2017.Models
     public CustomBill GetCustomBill(int id)
     {
       return _context.CustomBills.Where(c => c.Id == id).FirstOrDefault();
+    }
+    public IEnumerable<CustomBill> GetCustomBills(int billId)
+    {
+      return _context.CustomBills.Where(c => c.BillId == billId).ToList();
     }
 
     public void AddCustomBill(CustomBill cbill)
@@ -70,6 +103,16 @@ namespace BudgetThis2017.Models
     public void UpdateSettings(Setting settings)
     {
       _context.Update(settings);
+    }
+
+    public PaycheckViewModel GetPaycheckViewModel(Guid identity, string paycheckType)
+    {
+      var temp = _context.Paychecks.FirstOrDefault(p => p.UserId == identity && p.Type == paycheckType);
+      return Mapper.Map<PaycheckViewModel>(temp);
+    }
+    public Paycheck GetPaycheck(Guid identity, string paycheckType)
+    {
+      return _context.Paychecks.FirstOrDefault(p => p.UserId == identity && p.Type == paycheckType);
     }
   }
 }

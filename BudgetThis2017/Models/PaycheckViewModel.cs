@@ -13,5 +13,15 @@ namespace BudgetThis2017.Models
     public string Type { get; set; }
     public Paycheck PayCheck { get; set; }
     public bool Exists { get; set; }
+
+    public PaycheckViewModel(Guid userid, string type)
+    {
+      Type = type;
+      UserID = userid;
+      //todo: fix
+      //var p = new PBProxy();
+      //PayCheck = p.GetPaycheck(userid.ToString(), type);
+      Exists = this.PayCheck != null;
+    }
   }
 }

@@ -11,6 +11,7 @@ namespace BudgetThis2017.Models
   {
     public int Index { get; set; }
     public DateTime Date { get; set; }
+    public int DayOfWeek { get; set; }
     public List<BillViewModel> Bills { get; set; }
     public PaycheckDetailsViewModel Paycheck { get; set; }
     public int PaydayIndex { get; set; }
