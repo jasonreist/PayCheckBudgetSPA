@@ -5,53 +5,50 @@
 <head>
   <title>Budget This - @ViewBag.Title</title>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="~/lib/bootswatch/yeti/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="~/lib/bootswatch/yeti/bootstrap.css" />
   <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
   <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
 
-  <div>
 
-    <div class="row" style="padding:10px 0 0 10px;">
-      <div class="col-md-2">Budget This</div>
-      <div class="col-md-1"><a href="/home#!/">Home</a></div>
-      <div class="col-md-1"><a href="/home#!/bills/">Bills</a></div>
-      <div class="col-md-1"><a href="/home#!/settings">Settings</a></div>
-      <div class="col-md-2 col-md-offset-2">Welcome @User.Identity.Name</div>
-      <div class="col-md-1"><a href="/Auth/Logout">Logout</a></div>
+
+  <div class="row" style="padding:10px 0 0 10px;">
+    <div class="col-md-2">Budget This</div>
+    <div class="col-md-1"><a href="/home#!/">Home</a></div>
+    <div class="col-md-1"><a href="/home#!/bills/">Bills</a></div>
+    <div class="col-md-1"><a href="/home#!/settings">Settings</a></div>
+    <div class="col-md-2 col-md-offset-2">Welcome @User.Identity.Name</div>
+    <div class="col-md-1"><a href="/Auth/Logout">Logout</a></div>
+  </div>
+
+    <div class="row hidden-sm hidden-xs">
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Sunday</div>
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Monday</div>
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Tuesday</div>
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Wednesday</div>
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Thursday</div>
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Friday</div>
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Saturday</div>
+    </div>
+    <div class="row hidden-xs hidden-md hidden-lg">
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Su</div>
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Mo</div>
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Tu</div>
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">We</div>
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Th</div>
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Fr</div>
+      <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Sa</div>
     </div>
 
-    <div class="container">
-      <div class="row hidden-sm hidden-xs">
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Sunday</div>
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Monday</div>
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Tuesday</div>
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Wednesday</div>
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Thursday</div>
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Friday</div>
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Saturday</div>
-      </div>
-      <div class="row hidden-xs hidden-md hidden-lg">
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Su</div>
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Mo</div>
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Tu</div>
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">We</div>
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Th</div>
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Fr</div>
-        <div class="col-sm-1 col-md-2 text-center padding-right-left" style="font-family: verdana; font-size: 16px;">Sa</div>
-      </div>
-    </div>
+  <div id="main" class="container-fluid" style="margin-top: 40px;">
+    @RenderBody()
+  </div>
 
-    <div id="main" class="container-fluid" style="margin-top: 40px;">
-      @RenderBody()
-    </div>
-
-    <div id="footer" class="container-fluid">
-      <div class="navbar navbar-inverse navbar-fixed-bottom">
-        <h4 class="text-center text-info">&copy; 2017 Budget This</h4>
-      </div>
+  <div id="footer" class="container-fluid">
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+      <h4 class="text-center text-info">&copy; 2017 Budget This</h4>
     </div>
   </div>
 

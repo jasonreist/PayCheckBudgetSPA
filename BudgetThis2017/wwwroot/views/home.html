@@ -1,15 +1,27 @@
 ﻿
-  <div class="text-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
+<div class="text-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
 
-  <div class="text-center" ng-show="vm.isBusy"><i class="fa fa-spinner fa-spin"></i> Loading...</div>
+<div class="text-center" ng-show="vm.isBusy"><i class="fa fa-spinner fa-spin"></i> Loading...</div>
 
-  <div class="row">
-    <div class="col-sm-1 col-md-2" style="" ng-repeat-start="day in vm.home.days" ng-if="$index < 7" ng-repeat-end>
-      {{day.date | date : 'LLLL'}} {{day.date | date : 'd'}}
+<div class="row">
+  <div class="col-sm-1 col-md-2" style="height:120px; font-size:14px; font-family:Verdana;" ng-repeat-start="day in vm.home.days" ng-repeat-end>
+    <ul class="list-group" style="">
+      <li class="list-group-item" style="background-color: #{{day.monthColor}}">
+        <strong>{{day.date | date : 'd'}}</strong>
+      </li>
 
-      <div ng-repeat="bill in day.bills">
+      <li class="list-group-item list-group-item-info" style="text-align: right;" ng-show="day.paycheck != null">
+        <span class="amounts"> <span class="glyphicon glyphicon-plus"></span> <span style="font-size: 14px;">{{day.paycheck.summary.credits | currency}}</span></span><br>
+        <span class="amounts"> <span class="glyphicon glyphicon-minus"></span> <span style="font-size: 14px;">{{day.paycheck.summary.debits | currency}}</span></span><br>
+        <span class="amounts ">
+          <span class="glyphicon glyphicon-play"></span>  <span style="font-size: 14px;">{{day.paycheck.summary.remaining | currency}}</span>
+        </span>
+      </li>
+
+      <li class="list-group-item day" ng-repeat="bill in day.bills">
         <i class="{{bill.icon}}"></i> {{bill.name}} {{bill.amount | currency}}
-      </div>
-    </div>
-
+      </li>
+    </ul>
   </div>
+
+</div>
